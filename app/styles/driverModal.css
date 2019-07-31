@@ -1,0 +1,186 @@
+/*
+@keyframes  animatebottom {
+  from {transform: translateY(0); opacity:0.94}
+  to {transform: translateY(100%); opacity:0}
+}
+@keyframes  animatetop {
+  from {transform: translateY(100%); opacity:0}
+  to {transform: translateY(0); opacity:0.94}
+}
+@-webkit-keyframes  animatetop {
+  from {transform: translateY(100%); opacity:0}
+  to {transform: translateY(0); opacity:0.94}
+}
+@-moz-keyframes  animatetop {
+  from {transform: translateY(100%); opacity:0}
+  to {transform: translateY(0); opacity:0.94}
+}
+@-ms-keyframes  animatetop {
+  from {transform: translateY(100%); opacity:0}
+  to {transform: translateY(0); opacity:0.94}
+}
+@-o-keyframes animatetop {
+  from {transform: translateX(100%); opacity:0}
+  to {transform: translateX(0); opacity:0.94}
+}*/
+.driver-modal-content {
+  position:relative;
+  top:-5vh;
+  background-color: #fefefe;
+  margin: 0px auto; /* auto means left/right centered */
+  padding: 0; /* ZERO PADDING - default value*/
+  border: 2px solid rgb(255, 177, 10);
+  border-radius:14px;
+  width:75vw;
+  height: 85vh;   /* Could be more or less, depending on screen size */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.19),0 6px 20px 0 rgba(0,0,0,0.19);
+  /*-webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.58s;
+  -moz-animation-name: animatetop;
+  -moz-animation-duration: 0.58s;
+  -ms-animation-name: animatetop;
+  -ms-animation-duration: 0.58s;
+  -o-animation-name: animatetop;
+  -o-animation-duration: 0.58s;
+  animation-name: animatetop;
+  animation-duration: 0.58s;*/
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling:touch;
+}
+.driver-modal-header{
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.19),0 6px 20px 0 rgba(0,0,0,0.19);
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  top:0;
+  font-family:roboto;
+  padding: 1px 5px;
+  color:rgb(255,255,255);
+  background-color:rgb(255, 177, 10);
+  z-index:3;
+}
+.driver-modal-footer {
+  font-family:roboto;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  bottom:0;
+}
+.driver-modal-footer .clear-button-area, .poleTimeDiv {
+  background-color: #fefefe;
+  padding:3px 0px;
+
+}
+.driver-modal-footer .content {
+  color:rgb(0,0,0,0.7);
+  padding: 1px 18px;
+  background-color:rgb(255, 177, 10);
+  font-size:78%;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.19),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.clearDriverBtn {
+  margin:0px auto 0px auto;
+  display:block;
+  background-color:rgba(0,0,0,0.2);
+  border-color:none;
+  color:rgba(0,0,0,0.8);
+  border-radius : 5px;
+}
+.modal-close {
+  background-color:rgb(255, 177, 10);
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  top:0;
+  z-index:6;
+  color: #aaa;
+  float: right;
+  overflow:hidden;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top:5px;
+  margin-right:15px;
+  margin-left:5px;
+}
+.modal-close:hover, .modal-close:active,
+.modal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.driverButton {
+  font-size:10px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-radius:12px;
+  background-color:rgba(0, 0, 0, 0.08);
+  min-height:25px;
+  max-height:50px;
+  min-width:60px;
+  white-space: normal;
+  max-width:100px;
+  padding:2px 3px;
+  margin:4px auto;
+}
+.driverButton:hover, .driverButton:active {
+  background-color:rgba(0, 0, 0, 0.16);
+  border:1px solid rgba(0, 0, 0, 0.48);
+  transition : background 0.2s, border 0.3s;
+}
+.driver-modal-body {
+  display:grid;
+  grid-template-rows: auto;
+  grid-template-columns: minmax(30px, 80px) minmax(30px, 80px);
+  justify-content: center;
+  padding: 5vh 7vw;
+  grid-gap: 2vh 6vw;
+}
+.modal-header-string {
+  padding-left:5px;
+  margin:8px;
+}
+
+.poleTimes {
+  display:grid;
+  grid-template-columns: 40px 40px 45px 35px;
+  grid-gap:2px;
+  justify-content: center;
+  padding-top:5px;
+}
+.poleTime,.poleTime1,.poleTime2,.tickButton  {
+  background-color:rgba(0, 0, 0, 0.08);
+  border: 1px solid rgb(255, 177, 10);
+  border-radius : 3px;
+  position:relative;
+  bottom:5px;
+}
+.tickButton {
+  margin-left:5px;
+  background-color:rgba(0, 0, 0, 0.08);
+  border: 1px solid rgb(255, 177, 10);
+  border-radius : 5px;
+}
+.tickButton:hover, .tickButton:active {
+  background-color:rgba(255, 177, 10, 0.9);
+}
+.poleMsgWrapper {
+  text-align: center;
+  height : max-content;
+}
+.poleMsg {
+  margin:10px auto;
+  display: inline-block;
+}
+.footer-description {
+   padding-left:20px;
+}
+.papagraph-description {
+  margin :5px;
+}

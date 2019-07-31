@@ -1,0 +1,122 @@
+@keyframes  animatebottom {
+  from {transform: translateY(0); opacity:0.94}
+  to {transform: translateY(100%); opacity:0}
+}
+@keyframes  animatetop {
+  from {transform: translateY(100%); opacity:0}
+  to {transform: translateY(0); opacity:0.94}
+}
+@-webkit-keyframes  animatetop {
+  from {transform: translateY(100%); opacity:0}
+  to {transform: translateY(0); opacity:0.94}
+}
+@-moz-keyframes  animatetop {
+  from {transform: translateY(100%); opacity:0}
+  to {transform: translateY(0); opacity:0.94}
+}
+@-ms-keyframes  animatetop {
+  from {transform: translateY(100%); opacity:0}
+  to {transform: translateY(0); opacity:0.94}
+}
+@-o-keyframes animatetop {
+  from {transform: translateX(100%); opacity:0}
+  to {transform: translateX(0); opacity:0.94}
+}
+.race-modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top:16vh; /* Location of box */
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height *//* Enable scroll if needed */
+  background-color: rgb(255, 255, 255); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.35);/* Black w/ opacity */
+}
+.race-modal-content {
+  position:relative;
+  top:-5vh;
+  background-color: #fefefe;
+  margin: 0px auto; /* auto means left/right centered */
+  padding: 0; /* ZERO PADDING - default value*/
+  border: 2px solid rgb(255, 177, 10);
+  border-radius:14px;
+  width:70vw;
+  height: 70vh;   /* Could be more or less, depending on screen size */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.19),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.58s;
+  -moz-animation-name: animatetop;
+  -moz-animation-duration: 0.58s;
+  -ms-animation-name: animatetop;
+  -ms-animation-duration: 0.58s;
+  -o-animation-name: animatetop;
+  -o-animation-duration: 0.58s;
+  animation-name: animatetop;
+  animation-duration: 0.58s;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling:touch;
+}
+.race-modal-header{
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.19),0 6px 20px 0 rgba(0,0,0,0.19);
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  top:0;
+  font-family:roboto;
+  padding: 1px 5px;
+  color:rgb(255,255,255);
+  background-color:rgb(255, 177, 10);
+  z-index:3;
+}/*
+.race-modal-footer {
+  font-family:roboto;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom:0;
+}
+.race-modal-footer .clear-button-area, .poleTimeDiv {
+  background-color: #fefefe;
+  padding:3px 0px;
+
+}
+.race-modal-footer .content {
+  color:rgb(0,0,0,0.7);
+  padding: 1px 18px;
+  background-color:rgb(255, 177, 10);
+  font-size:78%;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.19),0 6px 20px 0 rgba(0,0,0,0.19);
+}*/
+.race-modal-close {
+  background-color:rgb(255, 177, 10);
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  top:0;
+  z-index:6;
+  color: #aaa;
+  float: right;
+  overflow:hidden;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top:5px;
+  margin-right:15px;
+  margin-left:5px;
+}
+.race-modal-close:hover, .race-modal-close:active,
+.race-modal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.race-modal-body {
+  display : grid;
+}

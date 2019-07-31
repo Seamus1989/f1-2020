@@ -1,0 +1,38 @@
+{
+  "name": "f12020",
+  "version": "1.0.0",
+  "description": "knowledge put into practice, with formula 1",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-modal": "^3.8.2",
+    "styled-components": "^4.3.2",
+    "typewriter-effect": "^2.8.2",
+    "webpack": "^4.35.2",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.5",
+    "css-loader": "^3.0.0",
+    "style-loader": "^0.23.1",
+    "webpack-cli": "^3.3.5"
+  },
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Seamus1989/f1_2020.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Seamus1989/f1_2020/issues"
+  },
+  "homepage": "https://github.com/Seamus1989/f1_2020#readme"
+}

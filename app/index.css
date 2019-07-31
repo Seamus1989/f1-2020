@@ -1,0 +1,154 @@
+
+html {
+  background: black url(https://i.imgur.com/Qis4o5U.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  opacity:0.9;
+  background-size: cover;
+  font-family: roboto;
+  height: 100%;
+  overflow: hidden;
+  z-index:-10;
+}
+body {
+  height:100%;
+  overflow-y:scroll;
+  -webkit-overflow-scrolling: touch;
+  margin:0px;
+}
+.navDiv {
+  background: #000;
+  opacity:0.45;
+  text-shadow: 5px 5px 7px black;
+  position: fixed;
+  font-family:roboto;
+  font-weight : 200;
+  bottom : 0;
+  left : 0;
+  right: 0;
+  display : flex;
+}
+.navDiv li {
+  display: table;
+  list-style: none;
+  transition: background .5s;
+  text-decoration: none;
+  font-size : 4.5vw;
+  margin:auto;
+  text-align: center;
+  height : 40px;
+  line-height : 8.5vh;
+  flex:1 1 100%;
+}
+
+.navDiv li a {
+  color: #fff;
+  text-decoration:none;
+}
+.navDiv li:hover, .navDiv li:active {
+  background: rgb(246, 135, 40);/*#117bff;*/
+  cursor: pointer;
+  transition: background 0.75s;
+}
+/* Predictor buttons */ /* Predictor buttons */ /* Predictor buttons */
+.PredBtn {
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color:rgba(0,0,0,0.67);
+  color:white;
+  position:auto;
+  min-height:25px;
+  max-height:55px;
+  min-width:70px;
+  max-width:130px;
+  border :1.2px solid black;
+  border-radius:12px;
+  font-weight:300;
+  font-size:13px;
+  padding-left:20px;
+  padding-right:20px;
+  white-space: normal;
+  text-shadow: none;
+}
+.bonusButton {
+  margin-top:50px;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color:rgba(0,0,0,0.7);
+  color:white;
+  position:auto;
+  height:35px;
+  width : 150px;
+  border :1.35px solid black;
+  border-radius:14px;
+  font-weight:300;
+  font-size:13.5px;
+  padding:2px 15px;
+  white-space: normal;
+  text-shadow: none;
+}
+.PredBtnClicked {
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color:rgba(255, 177, 10, 0.57);
+  color:white;
+  position:auto;
+  font-family:roboto;
+  min-height:25px;
+  max-height:55px;
+  padding-left:15px;
+  padding-right:15px;
+  min-width:80px;
+  max-width:180px;
+  border :1.25px solid black;
+  border-radius:12px;
+  font-size:13px;
+  white-space: normal;
+  font-weight:300;
+}
+.PredBtn:hover, .PredBtn:active, .finals:active, .finals:hover {
+  background-color:rgba(255, 177, 10, 0.57);
+  text-shadow: 1px 3px 2px black;
+  transition: background  .3s, text-shadow 0.5s;
+}
+.bonusButton:hover, .bonusButton:active {
+  background-color:rgba(255, 177, 10, 0.68);
+  text-shadow: 1px 3px 2px black;
+  transition: background  .2s, text-shadow 0.3s;
+}
+.gridButtons {
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-appearance: none;
+  display:grid;
+  grid-template-columns: minmax(40vw, 48vw) minmax(40vw, 48vw);
+  grid-gap: 10vw;
+  justify-items :center;
+  padding-top:105vh;
+  padding-bottom:40vh;
+}
+.finals {
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color:rgba(0, 0, 0, 0.4);
+  color:white;
+  font-family:roboto;
+  min-height:25px;
+  max-height:35px;
+  min-width:150px;
+  border :1.2px solid black;
+  border-radius:12px;
+  margin : 20px 1px;
+  font-size:14px;
+  font-weight:300;
+}
+.modal-header-string {
+  transition : all 1s ease-in-out;
+}
+/*  https://javascriptplayground.com/css-modules-webpack-react/
+grid-template-columns: minmax(40vw, 48vw) minmax(40vw, 48vw);*/
