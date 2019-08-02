@@ -29,6 +29,11 @@ export default class PredictorGridButtons extends React.Component {
     })
     if (this.props.form[this.props.position] != null) {
       this.setState({hideClearButton:false})
+    } else if (this.props.form[this.props.position] === null) {
+      this.setState({hideClearButton:true})
+    }
+    if (this.state.driver) {
+      driversHidden[this.state.driver] = true;
     }
   }
   handleDriverSelect(e) {
@@ -36,7 +41,6 @@ export default class PredictorGridButtons extends React.Component {
     let driver = e.target.value;
     let newTextValue = position+": "+driver;
     this.props.formUpdate(e, position)
-    driversHidden[e.target.value] = true;
     this.setState({
       hidden:driversHidden,
       newGridButtonString:newTextValue,
@@ -44,6 +48,9 @@ export default class PredictorGridButtons extends React.Component {
       header : this.props.position+": "+e.target.innerText,
       class : "PredBtnClicked"
     })
+    if (this.state.driver) {
+      driversHidden[this.state.driver] = false
+    }
   }
   toggleClearButtonHide(e) {
     driversHidden[this.state.driver] = false;
@@ -52,7 +59,6 @@ export default class PredictorGridButtons extends React.Component {
     this.props.formUpdate(e, position)
     this.setState({
       hidden:driversHidden,
-      hideClearButton:true,
       newGridButtonString:this.props.positionString,
       driver : null,
       position : this.props.position,
@@ -78,7 +84,7 @@ export default class PredictorGridButtons extends React.Component {
         position = {this.state.position}
         driverSelection = {this.handleDriverSelect}
         onClose = {this.handleModalToggle}
-        poleTimeShow = {false}
+        showPole = {false}
         />}
         </React.Fragment>
     )
