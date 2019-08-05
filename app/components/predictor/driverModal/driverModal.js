@@ -2,6 +2,8 @@ import React, { Component, useState, useRef, useEffect,useLayoutEffect } from "r
 import ReactDOM from 'react-dom'
 import Typewriter from 'typewriter-effect';
 import DriverButtons from './drivers.js'
+import PoleTimeFunction from './functions/poleTimeFunction.js'
+
 
 /*  STYLES  */  /*  STYLES  */  /*  STYLES  */
 import './../../../styles/driverModal.css'
@@ -12,150 +14,10 @@ import StyledModal from "./../../../styles/modalTransitions.css.js";
 import footerFunction from './functions/footerFunction.js';
 import useOutsideClick from './functions/outsideClickHook.js'
 
-
-const PoleTimeFunction = (formCallback, closeCallback) => {
-  const {inputs, handleInputChange, handleTick} = usePoleTimes(formCallback, closeCallback)
-  return (
-    <React.Fragment>
-    <input onChange = {handleInputChange} value = {inputs.min} className = "poleTime" type = "number" placeholder = " m:" name = "min" ></input>
-    <input onChange = {handleInputChange} value = {inputs.sec} className = "poleTime1" type = "number" placeholder = " ss." name = "sec" ></input>
-    <input onChange = {handleInputChange} value = {inputs.milli} className = "poleTime2" type = "number" placeholder = " SSS" name = "milli"></input>
-    <button onClick = {handleTick} className = "tickButton" name = "tick">&#10004;</button>
-    </React.Fragment>
-  )
-}
-function checkOne(input, func) {
-  if (input.length === 1) {
-    let arg = Number(input)
-    if (arg<0) {
-      return {success:false, message : "Please enter positive values!"}
-    } else if (0<= arg <= 9) {
-      let zero = "0"
-      let newValue = zero+input
-      func(inputs => ({...inputs, min: newValue}))
-      return {success:true, value :newValue}
-    }
-  } else if (input.length === 2) {
-    let arg = Number(input)
-    if (arg<0) {
-      return {success:false, message : "Please enter positive values!"}
-    } else if (0<= arg <= 9) {
-      func(inputs => ({...inputs, min: input}))
-      return {success:true, value :input}
-    } else if (0<= arg>9) {
-      return {success:false, message : "Please, no ones that slow!"}
-    }
-  } else if (input.length > 2) {
-    let arg = Number(input)
-    if (arg<0) {
-      return {success:false, message : "Please enter positive values!"}
-    } else {
-      return {success:false, message : "Minutes input is way too large!"}
-    }
-  }
-}
-
-function checkTwo(input, func) {
-  if (input.length === 1) {
-    let arg = Number(input)
-    if (arg<0) {
-      return {success:false, message : "Please enter positive values!"}
-    } else if (0<= arg <= 9) {
-      let zero = "0"
-      let newValue = zero+input
-      func(inputs => ({...inputs, sec: newValue}))
-      return {success:true, value :newValue}
-    }
-  } else if (input.length === 2) {
-    let arg = Number(input)
-    if (arg<0) {
-      return {success:false, message : "Please enter positive values!"}
-    } else if (0<= arg <= 59) {
-      func(inputs => ({...inputs,sec: input}))
-      return {success:true, value :input}
-    } else if (arg>59) {
-      return {success:false, message : "Please enter a minute value less than 60!"}
-    }
-  } else if (input.length > 2) {
-    let arg = Number(input)
-    if (arg<0) {
-      return {success:false, message : "Please enter positive values!"}
-    } else {
-      return {success:false, message : "Seconds input is too large!"}
-    }
-  }
-}
-
-function checkThree(input, func) {
-  let zero = "0"
-  let doubleZero = "00"
-  let number = Number(input)
-  if (number <0) {
-    return {success:false, message : "Please enter positive values!"}
-  } else if (number >= 0) {
-    if (input.length === 1) {
-      let newValue = input+doubleZero
-      func(inputs => ({...inputs, milli: newValue}))
-      return {success:true, value :newValue}
-    } else if (input.length === 2) {
-      let newValue = input+zero
-      func(inputs => ({...inputs,milli: newValue}))
-      return {success:true, value :newValue}
-    } else if (input.length ===3) {
-      func(inputs => ({...inputs,milli: input}))
-      return {success:true, value :input}
-    } else if (input.length > 3) {
-      return {success:false, message : "Please check the milli-second input!"}
-    }
-  }
-}
-const usePoleTimes = (callback, closeCallback) => {
-  const [inputs, setInputs] = useState({min:"", sec:"", milli:""})
-  function handleTick(e) {
-    if (e) {
-      //check inputs? if all three pass test, then close modal and update form.
-      if (inputs.min != "" && inputs.sec != "" && inputs.milli != "") {
-        let firstCheck = checkOne(inputs.min, setInputs)
-        let secondCheck = checkTwo(inputs.sec, setInputs)
-        let thirdCheck = checkThree(inputs.milli, setInputs)
-        if (firstCheck.success !=true) {
-          console.log(firstCheck)
-          //messageModal?
-        } else {
-          if (secondCheck.success != true) {
-            console.log(secondCheck)
-            //messageModal?
-          } else {
-            if (thirdCheck.success !=true) {
-              console.log(thirdCheck)
-            } else {
-              let allThree = firstCheck.value + ":"+secondCheck.value+"."+thirdCheck.value
-              console.log(allThree)
-              //fire form, and change header?
-              //close modal?
-              //returns stuff, then fire this within local function and then close and set headers etc
-              callback(allThree)
-              closeCallback()
-            }
-          }
-        }
-      }
-    }
-  }
-  function handleInputChange(e) {
-    e.persist();
-    setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
-  }
-  return {
-    handleTick,
-    handleInputChange,
-    inputs,
-  }
-}
-
-
+import { driversFullNameObject } from './../../../variables/reactVariables.js'
 ////////////////////////////////////////////////////////////////////////
 function DriverModal({
+  currentDriver,
   poleForm,
   showPole,
   hiddenDriversObject,
@@ -170,6 +32,74 @@ function DriverModal({
     handleClick()
   })
   const [fade, fadeFunc] = useState(null)
+  ///////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////
+  const [text, toText] = useState("");
+  const [dataText, dataTextControl] = useState(null)
+  const [isDeleting, toDelete] = useState(false)
+  const [typingSpeed, toTypingSpeed] = useState(60)
+  const [isSecondType, setSecondType] = useState(false)
+  ///////////////////////////////////////////////////////////////
+  function handleType() {
+    if (currentDriver) {
+      if (dataText) {
+        if (!isDeleting) {
+          let fullText = dataText
+          toText(text => fullText.substring(0, text.length + 1))
+          if (text === fullText) {
+            // closes modal after typewriter has finished typing
+            handleClick()
+          }
+        } else if (isDeleting) {
+          if (!isSecondType) {
+            // deleting phase
+            let fullText = text
+            toTypingSpeed(typingSpeed =>35)
+            toText(text => fullText.substring(0, text.length - 1))
+            if (text === "") {
+              // full text has deleted, now change Delete, and start typing new driver
+              toDelete(isDeleting => false)
+              let fullText = currentDriver
+              toText(text => fullText.substring(0, text.length + 1))
+            }
+          }
+        }
+      } else if (!dataText) {
+        if (!isDeleting) {
+          if (!isSecondType){
+            //
+            let fullText = currentDriver
+            toTypingSpeed(typingSpeed =>95)
+            toText(text => fullText.substring(0, text.length + 1))
+            if (text === fullText) {
+              setTimeout(function() {
+                toDelete(isDeleting => true)
+              }, 500)
+            }
+          }
+        } else if (isDeleting) {
+
+          if (!isSecondType) {
+            let fullText = currentDriver
+            toTypingSpeed(typingSpeed =>35)
+            toText(text => fullText.substring(0, text.length -1))
+            if (text === "") {
+              setSecondType(isSecondType=>true)
+              toDelete(isDeleting => false)
+            }
+          }
+        }
+      }
+    }
+  }
+  useLayoutEffect(function() {
+    setTimeout(function() {
+      handleType()
+    },typingSpeed)
+  },[text, dataText, isDeleting,isSecondType]);
+  ////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////
   function transitionEnd(e) {
     if (e.propertyName !== "opacity" || fade === "in") return;
     if (fade === "out") {
@@ -180,9 +110,25 @@ function DriverModal({
     fadeFunc(fade => "out")
   }
   function handleDriverClick(e) {
+    let driverName = e.target.value
+    if (currentDriver === null && dataText === null) {
+      // first click (selection of any driver for particular modal)
+      dataTextControl(dataText => driverName)
+    } else if (dataText === null && currentDriver !=null) {
+      //click on a driver after typewriter has finished
+      dataTextControl(dataText => driverName)
+      if (!isSecondType && !isDeleting) {
+        toDelete(isDeleting =>true)
+        // click on a driver while typeWriter is typing
+        console.log("click on driver typing")
+        console.log(currentDriver, text, dataText, isDeleting,isSecondType)
+        console.log("click on driver typing")
+      } else if (!isSecondType && isDeleting) {
+        // click on driver as typeWriter is Deleting
+      }
+    }
     if (showPole == false) {
       driverSelection(e)
-      handleClick()
     } else if (showPole === true) {
       driverSelection(e)
     }
@@ -207,7 +153,12 @@ function DriverModal({
       <span onClick = {handleClick} className = "modal-close">&times;</span>
 
         <div className = "driver-modal-header">
-          <h3 className = "modal-header-string">{headerString}</h3>
+          <div className = "modal-header-string">
+          <h1>{headerString+":"}&nbsp;
+            <span>{text}</span>
+            <span className="cursor"></span>
+          </h1>
+          </div>
         </div>
 
 

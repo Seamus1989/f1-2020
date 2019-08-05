@@ -45,7 +45,7 @@ export default class PredictorGridButtons extends React.Component {
       hidden:driversHidden,
       newGridButtonString:newTextValue,
       driver : e.target.value,
-      header : this.props.position+": "+e.target.innerText,
+      header : this.props.positionString,
       class : "PredBtnClicked"
     })
     if (this.state.driver) {
@@ -85,6 +85,7 @@ export default class PredictorGridButtons extends React.Component {
         driverSelection = {this.handleDriverSelect}
         onClose = {this.handleModalToggle}
         showPole = {false}
+        currentDriver = {this.state.driver}
         />}
         </React.Fragment>
     )

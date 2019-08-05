@@ -1,10 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+
 import './../index.css'
 import Nav from './navComponent.js'
 import Predictor from './predictorButtons.js'
 
-import { driversHidden } from './../variables/reactVariables.js'
+
+
+
 
 export default class App extends React.Component {
   render() {
@@ -16,19 +19,7 @@ export default class App extends React.Component {
     )
   }
 }
-
 /*
-export default class App extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Predictor/>
-        <Nav/>
-      </React.Fragment>
-    )
-  }
-}
-
 export default class App extends React.Component {
   constructor(props) {
     super(props)

@@ -59,7 +59,28 @@ export const driversObject = {
   "George Russell":"Russell",
   "Robert Kubica":"Kubica"
 }
-
+export const driversFullNameObject = {
+  "Vettel" : "Sebastien Vettel",
+  "Leclerc" : "Charles Leclerc",
+  "Grosjean" : "Romain Grosjean",
+  "Magnussen" : "Kevin Magnussen",
+  "Norris" : "Lando Norris",
+  "Sainz" : "Carlos Sainz",
+  "Hamilton" : "Lewis Hamilton",
+  "Bottas" : "Valtteri Bottas",
+  "Perez" : "Sergio Perez",
+  "Stroll" : "Lance Stroll",
+  "Gasly" : "Pierre Gasly",
+  "Verstappen" : "Max Verstappen",
+  "Ricciardo" : "Daniel Ricciardo",
+  "Hulkenberg" : "Nico Hulkenberg",
+  "Raikkonen" : "Jimi Raikkonen",
+  "Giovinazzi" : "Antonio Giovinazzi",
+  "Albon" : "Alexander Albon",
+  "Kyvat" : "Daniel Kyvat",
+  "Russell" : "George Russell",
+  "Kubica" : "Robert Kubica"
+}
 export const driversHidden = {
   "Vettel" : false,
   "Leclerc" : false,

@@ -23,6 +23,19 @@
   from {transform: translateX(100%); opacity:0}
   to {transform: translateX(0); opacity:0.94}
 }*/
+.cursor {
+  border-left: .1em solid;
+  animation: blink .7s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+.driver-modal {
+  width: 100%; /* Full width */
+  height: 100%;
+}
 .driver-modal-content {
   position:relative;
   top:-5vh;
@@ -69,10 +82,13 @@
   position: sticky;
   bottom:0;
 }
-.driver-modal-footer .clear-button-area, .poleTimeDiv {
+.driver-modal-footer .clear-button-area, {
   background-color: #fefefe;
   padding:3px 0px;
-
+}
+.poleTimeDiv {
+  background-color: #fefefe;
+  padding : 8px 0px 0px 4px;
 }
 .driver-modal-footer .content {
   color:rgb(0,0,0,0.7);
@@ -154,18 +170,36 @@
   justify-content: center;
   padding-top:5px;
 }
-.poleTime,.poleTime1,.poleTime2,.tickButton  {
+.poleTime {
+  grid-column:1;
+
+}
+.poleTime1 {
+  grid-column:2;
+}
+.poleTime2 {
+  grid-column:3;
+}
+.poleTime,.poleTime1,.poleTime2  {
   background-color:rgba(0, 0, 0, 0.08);
   border: 1px solid rgb(255, 177, 10);
   border-radius : 3px;
   position:relative;
   bottom:5px;
+  justifyContent: center;
+  grid-row:1;
 }
+
+
 .tickButton {
   margin-left:5px;
+  grid-column:4;
+  grid-row:1;
   background-color:rgba(0, 0, 0, 0.08);
   border: 1px solid rgb(255, 177, 10);
   border-radius : 5px;
+  position:relative;
+  bottom:5px;
 }
 .tickButton:hover, .tickButton:active {
   background-color:rgba(255, 177, 10, 0.9);

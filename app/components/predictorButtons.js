@@ -15,7 +15,6 @@ export default class Predictor extends React.Component {
     this.handlePoleTime = this.handlePoleTime.bind(this)
   }
   handleForm(e, pos) {
-    console.log(this.state.form)
     let theTarget = e.target.value;
     if (theTarget != "cleared") {
       defaultPredictions[pos] = theTarget;

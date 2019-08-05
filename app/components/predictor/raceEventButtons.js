@@ -43,14 +43,12 @@ export default class PredictorGridButtons extends React.Component {
         let driverStr = this.state.driver
         let newString = positionStr + ": " + driverStr + " - " + timeVal
         this.setState({
-          newGridButtonString : newString,
-          header : newString
+          newGridButtonString : newString
         })
       } else if (!this.state.driver) {
         let newString = positionStr + ": " + timeVal
         this.setState({
-          newGridButtonString : newString,
-          header : newString
+          newGridButtonString : newString
         })
       }
     }
@@ -66,7 +64,6 @@ export default class PredictorGridButtons extends React.Component {
       this.setState({
         newGridButtonString : newTextValue,
         driver : e.target.value,
-        header : this.props.positionString+": "+e.target.innerText + " - "+timeString,
         class : "PredBtnClicked"
       })
     } else {
@@ -77,7 +74,6 @@ export default class PredictorGridButtons extends React.Component {
       this.setState({
         newGridButtonString:newTextValue,
         driver : e.target.value,
-        header : this.props.positionString+": "+e.target.innerText,
         class : "PredBtnClicked"
       })
     }
@@ -90,7 +86,6 @@ export default class PredictorGridButtons extends React.Component {
       newGridButtonString:this.props.positionString,
       driver : null,
       position : this.props.position,
-      header : this.props.positionString,
       class : "PredBtn"
     })
     if (position === "Pole") {
@@ -118,6 +113,7 @@ export default class PredictorGridButtons extends React.Component {
         onClose = {this.handleModalToggle}
         showPole = {this.props.showPole}
         poleForm = {this.handlePoleTime}
+        currentDriver = {this.state.driver}
         />}
         </React.Fragment>
     )
